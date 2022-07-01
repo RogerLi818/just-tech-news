@@ -1,7 +1,7 @@
 const {Model, DataTypes} = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-const bcrypt = require('bcrypt');
+
 
 
 // create your user model
@@ -68,9 +68,7 @@ User.init(
                 updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData;
             },
-        }
-    },
-    {
+        },
         // TABLE CONFIGURATION OPTIONS GO HERE (https://sequelize.org/v5/manual/models-definition.html#configuration)
 
         //pass in your imported sequelize connection (the direct connection to our database)
@@ -83,7 +81,7 @@ User.init(
         underscored:true,
         // make it so our model name stays lowercase in the database
         modelName:'user'
-    }
+    },
 );
 
 module.exports=User;
